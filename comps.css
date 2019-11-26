@@ -1,0 +1,26 @@
+h1 {
+  margin-left: 10px;
+}
+
+.comps li {
+  list-style-type: none;
+}
+
+.comps li a {
+  color: black;
+  text-decoration: none;
+}
+
+.comps li a:hover {
+  color: #0083ff;
+  text-decoration: underline;
+}
+
+@media(max-width: 640px) {
+  .comps li a {
+    font-size: 30px;
+  }
+  h1 {
+    font-size: 40px;
+  }
+}

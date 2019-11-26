@@ -1,0 +1,64 @@
+body{
+  margin: 0px;
+  padding: 0px;
+}
+
+.header {
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  list-style-type: none;
+  margin: 0px;
+  margin-bottom: 15px;
+  height:55px;
+}
+
+li {
+  padding: 10px;
+}
+
+.header li a {
+  font-size: 30px;
+  text-decoration: none;
+  color: white;
+  margin: 10px;
+  background-color: black;
+  border-radius: 2px;
+}
+
+.header li a:hover {
+  background-color: #0083ff;
+  color: black;
+}
+
+@media(max-width: 640px) {
+  .header {
+    height: 110px;
+  }
+  .header li a {
+    font-size: 60px;
+  }
+}
+
+.channel-container {
+  display: inline-grid;
+}
+
+.channel {
+  color: black;
+  font-size: 20px;
+  margin: 10px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.channel:hover {
+  color: #0083ff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#content {
+  padding: 10px;
+}
