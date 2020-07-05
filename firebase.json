@@ -8,6 +8,10 @@
     ],
     "rewrites": [
       {
+        "source": "/",
+        "function": "index"
+      },
+      {
         "source": "/comps",
         "function": "comps"
       },
