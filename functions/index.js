@@ -3,6 +3,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var fetch = require('node-fetch');
 
+// var gapis = require('https://apis.google.com/js/api.js');
+
 var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 
@@ -12,7 +14,22 @@ app.use('/static', express.static('../public'));
 app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 
-app.use('/', express.static('../public'));
+// function execute() {
+//     return gapi.client.youtube.playlistItems.list({
+//       "part": "contentDetails",
+//       "playlistId": "UUY4J5vw3Ed8Rc3Njc-2qzfg"
+//     })
+//         .then(function(response) {
+//                 // Handle the results here (response.result has the parsed body).
+//                 console.log("Response", response);
+//               },
+//               function(err) { console.error("Execute error", err); });
+//   }
+
+// app.use('/', express.static('../public'));
+app.get('/', function(req, res) {
+  res.render('index', {"videoID": "14fqX7g3JEs"});
+});
 
 app.get('/comps', function(req, res){
   fetch('https://www.worldcubeassociation.org/api/v0/users/6836?upcoming_competitions=true')
@@ -27,7 +44,7 @@ app.get('/comps', function(req, res){
 });
 
 app.get('/pblTrainer', function(req, res) {
-  res.render('pblTrainer')
+  res.render('pblTrainer');
 });
 
 app.use(function(req,res){
@@ -45,5 +62,6 @@ app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
 
+exports.index = functions.https.onRequest(app);
 exports.comps = functions.https.onRequest(app);
 exports.pblTrainer = functions.https.onRequest(app);

@@ -5,16 +5,30 @@
 		<link rel="shortcut icon" type="image/jpg" href="/images/favicon.jpg">
 		<link rel="stylesheet" href="style.css">
 		<title>Ben Gottschalk</title>
-
+		<script src="https://apis.google.com/js/api.js"></script>
+		<script>
+		function execute() {
+				return gapi.client.youtube.playlistItems.list({
+					"part": "contentDetails",
+					"playlistId": "UUY4J5vw3Ed8Rc3Njc-2qzfg"
+				})
+						.then(function(response) {
+										// Handle the results here (response.result has the parsed body).
+										console.log("Response", response);
+									},
+									function(err) { console.error("Execute error", err); });
+			}
+			console.log(execute());
+		</script>
 	</head>
 	<body>
-    
+
 		{{> nav}}
 
 		<div id="content">
 			<h1>Currently a work in progress</h1>
 			<div class="channel-container">
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/be-O12Me9cM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoID}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				<a class="channel" href="https://www.youtube.com/c/BenjaminGottschalk">My YouTube Channel</a>
 			</div>
 		</div>
