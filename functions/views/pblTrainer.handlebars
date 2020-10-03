@@ -1,3 +1,30 @@
 {{> nav}}
 
-<iframe height="500px" width="100%" src="https://repl.it/repls/NavajowhiteFrankWebportal?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<!-- {{#each upcoming_competitions}}
+  {{> compContainer}}
+{{/each}} -->
+<div class="main">
+  <form class="cases">
+    <div class="topContainer">
+      <h2>Top Cases</h2>
+      <div class="topCases">
+        {{#each case}}
+        <input type="checkbox" value="{{this}}">
+        <label>{{this}}</label><br>
+        {{/each}}
+      </div>
+    </div>
+    <div class="bottomContainer">
+      <h2>Bottom Cases</h2>
+      <div class="bottomCases">
+        {{#each case}}
+        <input type="checkbox" value="{{this}}">
+        <label>{{this}}</label><br>
+        {{/each}}
+      </div>
+    </div>
+  </form>
+  <input type="submit" value="Submit">
+</div>
+
+<!-- <iframe height="500px" width="100%" src="https://repl.it/repls/NavajowhiteFrankWebportal?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe> -->
