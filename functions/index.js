@@ -15,7 +15,7 @@ app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 
 app.get('/', function(req, res) {
-  fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=1&playlistId=UUY4J5vw3Ed8Rc3Njc-2qzfg&key=AIzaSyCRWJ4QJime5LewJ9yvHNgvmSO5dTuHSOw')
+  fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=1&playlistId=UUY4J5vw3Ed8Rc3Njc-2qzfg&key=')
   .then(response => response.json())
   .then(data => {
     var context = data;
