@@ -32,8 +32,39 @@ li {
 }
 
 .header li a:hover {
-  background-color: #0083ff;
   color: black;
+  background-color: #0083ff;
+}
+
+.footer {
+  background-color: black;
+  list-style-type: none;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.footer li {
+  text-align: center;
+}
+
+.footer li a {
+  text-align: center;
+  font-size: 30px;
+  text-decoration: none;
+  color: white;
+  margin: 10px;
+  background-color: black;
+  border-radius: 2px;
+}
+
+.footer li a:hover {
+  color: black;
+  background-color: #0083ff;
 }
 
 .channel-container {

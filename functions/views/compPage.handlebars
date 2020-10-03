@@ -1,7 +1,13 @@
 {{> nav}}
+{{#if competitions}}
 <h1>Upcoming Competitions</h1>
+
 <ul class="comps">
   {{#each upcoming_competitions}}
-    {{> compContainer}}
+      {{> compContainer}}
   {{/each}}
 </ul>
+
+{{else}}
+<h1>No Upcoming Competitions</h1>
+{{/if}}

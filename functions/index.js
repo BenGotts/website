@@ -14,21 +14,16 @@ app.use('/static', express.static('../public'));
 app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 
-// function execute() {
-//     return gapi.client.youtube.playlistItems.list({
-//       "part": "contentDetails",
-//       "playlistId": "UUY4J5vw3Ed8Rc3Njc-2qzfg"
-//     })
-//         .then(function(response) {
-//                 // Handle the results here (response.result has the parsed body).
-//                 console.log("Response", response);
-//               },
-//               function(err) { console.error("Execute error", err); });
-//   }
-
-// app.use('/', express.static('../public'));
 app.get('/', function(req, res) {
-  res.render('index', {"videoID": "14fqX7g3JEs"});
+  fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=1&playlistId=UUY4J5vw3Ed8Rc3Njc-2qzfg&key=')
+  .then(response => response.json())
+  .then(data => {
+    var context = data;
+    var videoID = context['items'][0]['contentDetails']['videoId'];
+    var handlebars_file = 'index';
+    res.render(handlebars_file, {"videoID": videoID});
+  })
+  .catch(err => console.error(err));
 });
 
 app.get('/comps', function(req, res){
@@ -37,6 +32,12 @@ app.get('/comps', function(req, res){
     .then(data => {
       var context = data;
 
+      if(context["upcoming_competitions"].length == 0){
+        context["competitions"] = false;
+      }
+      else{
+        context["competitions"] = true;
+      }
       var handlebars_file = 'compPage';
       res.render(handlebars_file, context);
     })
@@ -44,7 +45,12 @@ app.get('/comps', function(req, res){
 });
 
 app.get('/pblTrainer', function(req, res) {
-  res.render('pblTrainer');
+  context = {"case": ['A-', 'A+', 'adj', 'Ba', 'Bb', 'Ca', 'Cb', 'Da', 'Db', 'E', 'F', 'Ga', 'Gb', 'Gc', 'Gd', 'H', 'Ja', 'Jb', 'Ka', 'Kb', 'M', 'Na', 'Nb', 'O-', 'O+', 'opp', 'Pa', 'Pb', 'pJ', 'pN', 'Q', 'Ra', 'Rb', 'Sa', 'Sb', 'T', 'U-', 'U+', 'V', 'W', 'X', 'Y', 'Z', '-']}
+  res.render('pblTrainer', context);
+});
+
+app.get('/about', function(req, res) {
+  res.render('about');
 });
 
 app.use(function(req,res){
@@ -65,3 +71,4 @@ app.listen(app.get('port'), function(){
 exports.index = functions.https.onRequest(app);
 exports.comps = functions.https.onRequest(app);
 exports.pblTrainer = functions.https.onRequest(app);
+exports.about = functions.https.onRequest(app);

@@ -1,0 +1,33 @@
+.aboutMe {
+  font-size: 17.5px;
+  padding: 0px 10px;
+  margin: 10px;
+}
+
+.socials {
+  align-items: center;
+  display: flex;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+a:hover {
+  color: grey;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li p {
+  margin: 0px;
+  margin-left: 10px;
+}
+
+/* body {
+  font-family: sans-serif;
+} */
